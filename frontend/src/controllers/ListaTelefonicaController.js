@@ -1,6 +1,11 @@
 angular
   .module('ListaTelefonica')
-  .controller('ListaTelefonicaController', function($scope, ContatosService, OperadorasService) {
+  .controller('ListaTelefonicaController', function(
+    $scope,
+    ContatosService,
+    OperadorasService,
+    SerialGeneratorService
+  ) {
     $scope.app = 'Lista Telefônica';
     $scope.contatos = [];
     $scope.operadoras = [];
@@ -18,6 +23,7 @@ angular
     };
 
     $scope.adicionarContato = contato => {
+      contato.serial = SerialGeneratorService.generate();
       ContatosService.adicionarContato(contato)
         .then(response => {
           delete $scope.contato;

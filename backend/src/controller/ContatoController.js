@@ -14,8 +14,8 @@ exports.carregarTodosContatos = async (req, res) => {
 
 exports.adicionarContato = async (req, res) => {
   try {
-    const { nome, telefone, operadora } = req.body;
-    const result = await ContatosModel.adicionarContato({ nome, telefone, operadora });
+    const { nome, telefone, operadora, serial } = req.body;
+    const result = await ContatosModel.adicionarContato({ nome, telefone, operadora, serial });
 
     if (result.rowsAffected[0] !== 0) {
       return res.json({ success: 'O usuário foi cadastrado com sucesso.' });
