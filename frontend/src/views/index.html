@@ -21,11 +21,17 @@
   <script src="../configs/SerialGeneratorConfig.js"></script>
   <script src="../filters/nameFilter.js"></script>
   <script src="../filters/ellipsisFilter.js"></script>
+  <script src="../directives/alertDirective.js"></script>
 </head>
 
 <body ng-controller="ListaTelefonicaController">
   <div class="jumbotron">
     <h4>{{ app }}</h4>
+
+    <alert title="Oops, ocorreu um problema!">
+      Não foi possível carregar os dados.
+    </alert>
+
     <table ng-show="contatos.length" class="table table-striped">
       <input type="text" class="form-control mt-1 mb-1" ng-model="criterioDeBusca" placeholder="O que você busca?" />
       <tr>
