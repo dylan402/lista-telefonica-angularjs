@@ -22,15 +22,16 @@
   <script src="../filters/nameFilter.js"></script>
   <script src="../filters/ellipsisFilter.js"></script>
   <script src="../directives/alertDirective.js"></script>
+  <script src="../directives/dateDirective.js"></script>
 </head>
 
 <body ng-controller="ListaTelefonicaController">
   <div class="jumbotron">
     <h4>{{ app }}</h4>
 
-    <alert title="Oops, ocorreu um problema!">
+    <app-alert title="Oops, ocorreu um problema!">
       Não foi possível carregar os dados.
-    </alert>
+    </app-alert>
 
     <table ng-show="contatos.length" class="table table-striped">
       <input type="text" class="form-control mt-1 mb-1" ng-model="criterioDeBusca" placeholder="O que você busca?" />
@@ -58,6 +59,7 @@
         placeholder="Nome" />
       <input type="text" class="form-control" name="telefone" ng-model="contato.telefone" ng-required="true"
         ng-pattern="/^\d{4,5}-\d{4}$/" placeholder="Telefone" />
+      <input type="text" class="form-control mt-2" name="data" ng-model="contato.data" placeholder="Data" app-date />
       <select class="form-control mt-2" name="operadora" ng-model="contato.operadora"
         ng-options="operadora.CodOperadora as operadora.Nome + ' - ' + (operadora.Preco | currency) group by operadora.Categoria for operadora in operadoras | orderBy:'nome'"
         ng-required="true">
