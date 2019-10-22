@@ -1,0 +1,4 @@
+<button class="accordion" ng-click="open()">{{ title }}</button>
+<div class="panel">
+  <p ng-transclude ng-show="isOpened">{{ content }}</p>
+</div>
