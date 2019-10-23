@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <app-accordions>
+    <app-accordion title="Accordion 1">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </app-accordion>
+    <app-accordion title="Accordion 2">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </app-accordion>
+  </app-accordions>
+
+  <h4>{{ app }}</h4>
+
+  <app-alert title="Oops, ocorreu um problema!">
+    Não foi possível carregar os dados.
+  </app-alert>
+
+  <table ng-show="contatos.length" class="table table-striped">
+    <input type="text" class="form-control mt-1 mb-1" ng-model="criterioDeBusca" placeholder="O que você busca?" />
+    <tr>
+      <th></th>
+      <th>Serial</th>
+      <th><a href="" ng-click="ordenarPor('Nome')">Nome</a></th>
+      <th><a href="" ng-click="ordenarPor('Telefone')">Telefone</a></th>
+      <th>Operadora</th>
+      <th>Data</th>
+    </tr>
+    <tr ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao ">
+      <td><input type="checkbox" ng-model="contato.selecionado" /></td>
+      <td>{{ contato.Serial }}</td>
+      <td>{{ contato.Nome | name | ellipsis: 7 }}</td>
+      <td>{{ contato.Telefone }}</td>
+      <td>{{ contato.NomeOperadora }}</td>
+      <td>{{ contato.DataRegistro | date: 'dd/MM/yyyy - HH:mm:ss' }}</td>
+    </tr>
+  </table>
+
+  <hr />
+  <a href="/novo-contato" class="btn btn-primary btn-block mt-2">Novo Contato</a>
+</div>

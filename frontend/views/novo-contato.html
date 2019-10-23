@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <a href="/contatos" class="btn btn-primary btn-block mb-2">Ver contatos</a>
+  <hr />
+  <form name="contatoForm">
+    <input type="text" class="form-control mb-2" name="nome" ng-model="contato.nome" ng-required="true"
+      placeholder="Nome" />
+    <input type="text" class="form-control" name="telefone" ng-model="contato.telefone" ng-required="true"
+      ng-pattern="/^\d{4,5}-\d{4}$/" placeholder="Telefone" />
+    <input type="text" class="form-control mt-2" name="data" ng-model="contato.data" placeholder="Data" app-date />
+    <select class="form-control mt-2" name="operadora" ng-model="contato.operadora"
+      ng-options="operadora.CodOperadora as operadora.Nome + ' - ' + (operadora.Preco | currency) group by operadora.Categoria for operadora in operadoras | orderBy:'nome'"
+      ng-required="true">
+      <option value="">Selecione uma operadora...</option>
+    </select>
+    <button type="button" class="btn btn-success btn-block mt-1" ng-click="adicionarContato(contato)"
+      ng-disabled="contatoForm.$invalid">
+      Adicionar contato
+    </button>
+    <button type="button" class="btn btn-danger btn-block mt-1" ng-click="apagarContatos(contatos)"
+      ng-if="isContatoSelecionado(contatos)">
+      Apagar contatos
+    </button>
+  </form>
+  <div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error">
+    <div ng-message="required" class="alert alert-danger">
+      <p class="text-center">Preencha o campo <strong>Nome</strong>.</p>
+    </div>
+  </div>
+  <div ng-show="contatoForm.telefone.$dirty" ng-messages="contatoForm.telefone.$error">
+    <div ng-message="required" class="alert alert-danger">
+      <p class="text-center">Preencha o campo <strong>Telefone</strong>.</p>
+    </div>
+    <div ng-message="pattern" class="alert alert-danger">
+      <p class="text-center">O campo Telefone está com um formato inválido. Formato válido: 00000-0000</p>
+    </div>
+  </div>
+  <div ng-show="contatoForm.operadora.$invalid && contatoForm.operadora.$dirty" class="alert alert-danger">
+    <p class="text-center">Campos obrigatórios: <strong>Operadora</strong>.</p>
+  </div>
+</div>

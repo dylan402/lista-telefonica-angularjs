@@ -1,6 +1,6 @@
 angular.module('ListaTelefonica').directive('appAlert', function() {
   return {
-    templateUrl: 'alert.html',
+    templateUrl: '/views/alert.html',
     replace: true,
     restrict: 'E',
     scope: {
