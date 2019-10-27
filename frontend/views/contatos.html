@@ -20,7 +20,7 @@
 
   <h4>{{ app }}</h4>
 
-  <app-alert title="Oops, ocorreu um problema!">
+  <app-alert ng-if="1===2" title="Oops, ocorreu um problema!">
     Não foi possível carregar os dados.
   </app-alert>
 
@@ -32,18 +32,22 @@
       <th><a href="" ng-click="ordenarPor('Nome')">Nome</a></th>
       <th><a href="" ng-click="ordenarPor('Telefone')">Telefone</a></th>
       <th>Operadora</th>
-      <th>Data</th>
+      <th>Data Nascimento</th>
     </tr>
     <tr ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao ">
       <td><input type="checkbox" ng-model="contato.selecionado" /></td>
       <td>{{ contato.Serial }}</td>
-      <td>{{ contato.Nome | name | ellipsis: 7 }}</td>
+      <td><a href="/contatos/{{ contato.CodContato }}">{{ contato.Nome | name | ellipsis: 7 }}</a></td>
       <td>{{ contato.Telefone }}</td>
       <td>{{ contato.NomeOperadora }}</td>
-      <td>{{ contato.DataRegistro | date: 'dd/MM/yyyy - HH:mm:ss' }}</td>
+      <td>{{ contato.DataNascimento | date: 'dd/MM/yyyy - HH:mm:ss' }}</td>
     </tr>
   </table>
 
   <hr />
   <a href="/novo-contato" class="btn btn-primary btn-block mt-2">Novo Contato</a>
+  <button type="button" class="btn btn-danger btn-block mt-1" ng-click="apagarContatos(contatos)"
+    ng-if="isContatoSelecionado(contatos)">
+    Apagar contatos
+  </button>
 </div>

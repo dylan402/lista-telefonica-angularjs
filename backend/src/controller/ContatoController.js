@@ -12,10 +12,24 @@ exports.carregarTodosContatos = async (req, res) => {
   }
 };
 
+exports.carregarContato = async (req, res) => {
+  try {
+    const CodContato = req.params.id;
+
+    const result = await ContatosModel.carregarContato(CodContato);
+
+    if (result.recordset.length === 0) return res.status(204).json();
+
+    return res.json(result.recordset[0]);
+  } catch (error) {
+    return res.status(500).json({ error: 'Ocorreu um error no servidor.' });
+  }
+};
+
 exports.adicionarContato = async (req, res) => {
   try {
-    const { nome, telefone, operadora, serial } = req.body;
-    const result = await ContatosModel.adicionarContato({ nome, telefone, operadora, serial });
+    const { nome, telefone, dataNascimento, operadora, serial } = req.body;
+    const result = await ContatosModel.adicionarContato({ nome, telefone, dataNascimento, operadora, serial });
 
     if (result.rowsAffected[0] !== 0) {
       return res.json({ success: 'O usuário foi cadastrado com sucesso.' });

@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Serial</th>
+      <th><a href="" ng-click="ordenarPor('Nome')">Nome</a></th>
+      <th><a href="" ng-click="ordenarPor('Telefone')">Telefone</a></th>
+      <th>Operadora</th>
+      <th>Data Nascimento</th>
+    </tr>
+    <tr>
+      <td><input type="checkbox" ng-model="contato.selecionado" /></td>
+      <td>{{ contato.Serial }}</td>
+      <td>{{ contato.Nome | name | ellipsis: 7 }}</td>
+      <td>{{ contato.Telefone }}</td>
+      <td>{{ contato.NomeOperadora }}</td>
+      <td>{{ contato.DataNascimento | date: 'dd/MM/yyyy - HH:mm:ss' }}</td>
+    </tr>
+  </table>
+  <a href="/contatos" class="btn btn-primary">Voltar</a>
+</div>

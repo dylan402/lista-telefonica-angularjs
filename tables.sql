@@ -1,17 +1,18 @@
-CREATE TABLE Contatos
+CREATE TABLE Projeto..Contatos
 (
 	CodContato INT IDENTITY(1,1) PRIMARY KEY,
 	Nome VARCHAR(100) NOT NULL,
 	Telefone VARCHAR(20) NOT NULL,
+	DataNascimento DATETIME NOT NULL,
 	Operadora INT NOT NULL,
-	DataRegistro DATETIME NOT NULL
+	DataRegistro DATETIME NOT NULL,
+	Serial VARCHAR (20) NOT NULL
 )
 
-CREATE TABLE Operadoras
+CREATE TABLE Projeto..Operadoras
 (
 	CodOperadora INT IDENTITY(1,1) PRIMARY KEY,
 	Nome VARCHAR(100) NOT NULL,
 	Categoria VARCHAR(100) NOT NULL,
-	Preco MONEY NOT NULL,
-	Serial VARCHAR(20) NOT NULL
+	Preco MONEY NOT NULL
 )
