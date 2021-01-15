@@ -6,6 +6,10 @@ function app($locationProvider) {
   $locationProvider.html5Mode(true);
 }
 
+/* CSS */
+require('./assets/css/style.css');
+require('./assets/css/accordion.css');
+
 /* CONFIGS */
 require('./configs/config');
 require('./configs/routeConfig');

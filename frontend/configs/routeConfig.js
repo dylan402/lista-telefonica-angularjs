@@ -5,7 +5,7 @@ angular.module('ListaTelefonica').config(routeConfig);
 function routeConfig($routeProvider) {
   $routeProvider
     .when('/contatos', {
-      templateUrl: 'views/contatos.html',
+      template: require('../views/contatos.html'),
       controller: 'ListaTelefonicaController',
       resolve: {
         contatos: function (ContatosService) {
@@ -14,7 +14,7 @@ function routeConfig($routeProvider) {
       },
     })
     .when('/contatos/:id', {
-      templateUrl: 'views/detalhesContato.html',
+      template: require('../views/detalhesContato.html'),
       controller: 'DetalheContatoController',
       resolve: {
         contato: function (ContatosService, $route) {
@@ -23,7 +23,7 @@ function routeConfig($routeProvider) {
       },
     })
     .when('/novo-contato', {
-      templateUrl: 'views/novo-contato.html',
+      template: require('../views/novo-contato.html'),
       controller: 'NovoContatoController',
       resolve: {
         operadoras: function (OperadorasService) {
