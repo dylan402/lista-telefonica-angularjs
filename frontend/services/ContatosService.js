@@ -1,13 +1,17 @@
-angular.module('ListaTelefonica').factory('ContatosService', function($http, config) {
+contatosService.$inject = ['$http', 'config'];
+
+angular.module('ListaTelefonica').factory('ContatosService', contatosService);
+
+function contatosService($http, config) {
   const carregarContatos = () => {
     return $http.get(`${config.baseUrl}:${config.port}/contatos`);
   };
 
-  const carregarContato = CodContato => {
+  const carregarContato = (CodContato) => {
     return $http.get(`${config.baseUrl}:${config.port}/contatos/${CodContato}`);
   };
 
-  const adicionarContato = contato => {
+  const adicionarContato = (contato) => {
     return $http.post(`${config.baseUrl}:${config.port}/contatos`, contato);
   };
 
@@ -16,4 +20,4 @@ angular.module('ListaTelefonica').factory('ContatosService', function($http, con
     carregarContato,
     adicionarContato,
   };
-});
+}

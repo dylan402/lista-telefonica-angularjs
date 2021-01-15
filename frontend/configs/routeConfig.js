@@ -1,33 +1,35 @@
-angular.module('ListaTelefonica').config(function($routeProvider) {
-  $routeProvider.when('/contatos', {
-    templateUrl: 'views/contatos.html',
-    controller: 'ListaTelefonicaController',
-    resolve: {
-      contatos: function(ContatosService) {
-        return ContatosService.carregarContatos();
-      },
-    },
-  });
+routeConfig.$inject = ['$routeProvider'];
 
-  $routeProvider.when('/contatos/:id', {
-    templateUrl: 'views/detalhesContato.html',
-    controller: 'DetalheContatoController',
-    resolve: {
-      contato: function(ContatosService, $route) {
-        return ContatosService.carregarContato($route.current.params.id);
-      },
-    },
-  });
+angular.module('ListaTelefonica').config(routeConfig);
 
-  $routeProvider.when('/novo-contato', {
-    templateUrl: 'views/novo-contato.html',
-    controller: 'NovoContatoController',
-    resolve: {
-      operadoras: function(OperadorasService) {
-        return OperadorasService.carregarOperadoras();
+function routeConfig($routeProvider) {
+  $routeProvider
+    .when('/contatos', {
+      templateUrl: 'views/contatos.html',
+      controller: 'ListaTelefonicaController',
+      resolve: {
+        contatos: function (ContatosService) {
+          return ContatosService.carregarContatos();
+        },
       },
-    },
-  });
-
-  $routeProvider.otherwise({ redirectTo: '/contatos' });
-});
+    })
+    .when('/contatos/:id', {
+      templateUrl: 'views/detalhesContato.html',
+      controller: 'DetalheContatoController',
+      resolve: {
+        contato: function (ContatosService, $route) {
+          return ContatosService.carregarContato($route.current.params.id);
+        },
+      },
+    })
+    .when('/novo-contato', {
+      templateUrl: 'views/novo-contato.html',
+      controller: 'NovoContatoController',
+      resolve: {
+        operadoras: function (OperadorasService) {
+          return OperadorasService.carregarOperadoras();
+        },
+      },
+    })
+    .otherwise({ redirectTo: '/contatos' });
+}

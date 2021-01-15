@@ -1,4 +1,8 @@
-angular.module('ListaTelefonica').directive('appAlert', function() {
+alertDirective.$inject = [];
+
+angular.module('ListaTelefonica').directive('appAlert', alertDirective);
+
+function alertDirective() {
   return {
     templateUrl: '/views/alert.html',
     replace: true,
@@ -9,4 +13,4 @@ angular.module('ListaTelefonica').directive('appAlert', function() {
     },
     transclude: true,
   };
-});
+}

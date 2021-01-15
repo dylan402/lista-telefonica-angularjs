@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html ng-app="ListaTelefonica" lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lista Telefônica</title>
+    <base href="/" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" text="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" text="text/css" href="assets/css/accordion.css" />
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    <script src="assets/js/angular-messages.min.js"></script>
+    <script src="assets/js/angular-locale_pt-br.js"></script>
+    <script src="assets/js/angular-serialGenerator.js"></script>
+    <script src="assets/js/angular-accordion.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Lista Telefonica</title>
-  <base href="/" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-  <link rel="stylesheet" text="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" text="text/css" href="assets/css/accordion.css">
-  <script src="assets/js/angular.js"></script>
-  <script src="assets/js/angular-route.js"></script>
-  <script src="assets/js/angular-messages.min.js"></script>
-  <script src="assets/js/angular-locale_pt-br.js"></script>
-  <script src="assets/js/angular-serialGenerator.js"></script>
-  <script src="assets/js/angular-accordion.js"></script>
-  <script src="app.js"></script>
-  <script src="controllers/ListaTelefonicaController.js"></script>
-  <script src="controllers/NovoContatoController.js"></script>
-  <script src="controllers/DetalheContatoController.js"></script>
-  <script src="services/ContatosService.js"></script>
-  <script src="services/OperadorasService.js"></script>
-  <script src="configs/routeConfig.js"></script>
-  <script src="configs/config.js"></script>
-  <script src="configs/SerialGeneratorConfig.js"></script>
-  <script src="filters/nameFilter.js"></script>
-  <script src="filters/ellipsisFilter.js"></script>
-  <script src="directives/alertDirective.js"></script>
-  <script src="directives/dateDirective.js"></script>
-</head>
-
-<body>
-  <div ng-view></div>
-</body>
-
+  <body>
+    <ng-view autoscroll></ng-view>
+  </body>
 </html>
