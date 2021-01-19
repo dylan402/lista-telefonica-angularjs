@@ -1,6 +1,6 @@
-const contatosHtml = require('../views/contatos.html');
-const detalhesContatosHtml = require('../views/detalhesContato.html');
-const novosContatosHtml = require('../views/novo-contato.html');
+require('../views/contatos.html');
+require('../views/detalhesContato.html');
+require('../views/novo-contato.html');
 
 routeConfig.$inject = ['$routeProvider'];
 
@@ -9,7 +9,7 @@ angular.module('ListaTelefonica').config(routeConfig);
 function routeConfig($routeProvider) {
   $routeProvider
     .when('/contatos', {
-      templateUrl: contatosHtml,
+      templateUrl: 'views/contatos.html',
       controller: 'ListaTelefonicaController',
       resolve: {
         contatos: [
@@ -21,7 +21,7 @@ function routeConfig($routeProvider) {
       },
     })
     .when('/contatos/:id', {
-      templateUrl: detalhesContatosHtml,
+      templateUrl: 'views/detalhesContato.html',
       controller: 'DetalheContatoController',
       resolve: {
         contato: [
@@ -34,7 +34,7 @@ function routeConfig($routeProvider) {
       },
     })
     .when('/novo-contato', {
-      templateUrl: novosContatosHtml,
+      templateUrl: 'views/novo-contato.html',
       controller: 'NovoContatoController',
       resolve: {
         operadoras: [
