@@ -40,7 +40,8 @@ module.exports = {
             },
           },
           {
-            loader: 'raw-loader',
+            loader: 'html-loader',
+            options: { minimize: true },
           },
         ],
       },
