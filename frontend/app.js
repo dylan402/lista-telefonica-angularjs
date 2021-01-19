@@ -20,10 +20,6 @@ require('./controllers/DetalheContatoController');
 require('./controllers/ListaTelefonicaController');
 require('./controllers/NovoContatoController');
 
-/* DIRECTIVES */
-require('./directives/alertDirective');
-require('./directives/dateDirective');
-
 /* FILTERS */
 require('./filters/ellipsisFilter');
 require('./filters/nameFilter');

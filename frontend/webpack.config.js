@@ -8,6 +8,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
   entry: [path.resolve(__dirname, 'app.js')],
+  output: {
+    filename: 'app.bundle.[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'dist',
+  },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
@@ -25,19 +30,24 @@ module.exports = {
       {
         test: /\.html$/i,
         include: [path.join(__dirname, 'views')],
-        exclude: [/node_modules/, path.join(__dirname, 'index.html')],
-        loader: 'html-loader',
+        exclude: [path.join(__dirname, 'node_modules'), path.join(__dirname, 'index.html')],
+        use: [
+          {
+            loader: 'ngtemplate-loader',
+            options: {
+              relativeTo: path.join(__dirname),
+            },
+          },
+          {
+            loader: 'raw-loader',
+          },
+        ],
       },
       {
         test: /\.css$/i,
-        exclude: /node_modules/,
+        exclude: [path.join(__dirname, 'node_modules')],
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
-  },
-  output: {
-    filename: 'app.bundle.[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist',
   },
 };

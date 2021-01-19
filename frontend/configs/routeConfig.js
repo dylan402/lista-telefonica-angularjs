@@ -1,3 +1,7 @@
+const contatosHtml = require('../views/contatos.html');
+const detalhesContatosHtml = require('../views/detalhesContato.html');
+const novosContatosHtml = require('../views/novo-contato.html');
+
 routeConfig.$inject = ['$routeProvider'];
 
 angular.module('ListaTelefonica').config(routeConfig);
@@ -5,30 +9,40 @@ angular.module('ListaTelefonica').config(routeConfig);
 function routeConfig($routeProvider) {
   $routeProvider
     .when('/contatos', {
-      template: require('../views/contatos.html'),
+      templateUrl: contatosHtml,
       controller: 'ListaTelefonicaController',
       resolve: {
-        contatos: function (ContatosService) {
-          return ContatosService.carregarContatos();
-        },
+        contatos: [
+          'ContatosService',
+          function (ContatosService) {
+            return ContatosService.carregarContatos();
+          },
+        ],
       },
     })
     .when('/contatos/:id', {
-      template: require('../views/detalhesContato.html'),
+      templateUrl: detalhesContatosHtml,
       controller: 'DetalheContatoController',
       resolve: {
-        contato: function (ContatosService, $route) {
-          return ContatosService.carregarContato($route.current.params.id);
-        },
+        contato: [
+          'ContatosService',
+          '$route',
+          function (ContatosService, $route) {
+            return ContatosService.carregarContato($route.current.params.id);
+          },
+        ],
       },
     })
     .when('/novo-contato', {
-      template: require('../views/novo-contato.html'),
+      templateUrl: novosContatosHtml,
       controller: 'NovoContatoController',
       resolve: {
-        operadoras: function (OperadorasService) {
-          return OperadorasService.carregarOperadoras();
-        },
+        operadoras: [
+          'OperadorasService',
+          function (OperadorasService) {
+            return OperadorasService.carregarOperadoras();
+          },
+        ],
       },
     })
     .otherwise({ redirectTo: '/contatos' });
