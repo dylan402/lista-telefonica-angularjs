@@ -5,20 +5,23 @@
   <h4 class="mb-5">Adicionar novo contato</h4>
 
   <form name="contatoForm">
-    <input type="text" class="form-control mb-2" name="nome" ng-model="contato.nome" ng-required="true"
-      placeholder="Nome" />
-    <input type="text" class="form-control" name="telefone" ng-model="contato.telefone" ng-required="true"
-      ng-pattern="/^\d{4,5}-\d{4}$/" placeholder="Telefone" />
-    <input type="text" class="form-control mt-2" name="dataNascimento" ng-model="contato.dataNascimento"
-      placeholder="Data" app-date />
-    <select class="form-control mt-2" name="operadora" ng-model="contato.operadora"
+    <input type="text" class="form-control mb-2" name="nome" ng-model="contato.nome" ng-required="true" placeholder="Nome" />
+    <input type="text" class="form-control" name="telefone" ng-model="contato.telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/" placeholder="Telefone" />
+    <input type="text" class="form-control mt-2" name="dataNascimento" ng-model="contato.dataNascimento" placeholder="Data" app-date />
+    <select
+      class="form-control mt-2"
+      name="operadora"
+      ng-model="contato.operadora"
       ng-options="operadora.CodOperadora as operadora.Nome + ' - ' + (operadora.Preco | currency) group by operadora.Categoria for operadora in operadoras | orderBy:'Nome'"
-      ng-required="true">
+      ng-required="true"
+    >
       <option value="">Selecione uma operadora...</option>
     </select>
-    <button type="button" class="btn btn-success btn-block mt-3" ng-click="adicionarContato(contato)"
-      ng-disabled="contatoForm.$invalid">
+    <button type="button" class="btn btn-success btn-block mt-3" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">
       Adicionar contato
+    </button>
+    <button type="button" class="btn btn-success btn-block mt-3" data-toggle="modal" data-target="#ModalTeste">
+      Abrir Modal
     </button>
   </form>
   <div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error">
@@ -38,3 +41,6 @@
     <p class="text-center">Campos obrigatórios: <strong>Operadora</strong>.</p>
   </div>
 </div>
+
+<!-- MODALS -->
+<ng-include src="'views/modals/modal.html'"></ng-include>

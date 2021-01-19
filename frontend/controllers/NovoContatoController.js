@@ -19,3 +19,6 @@ function novoContatoController($scope, $location, ContatosService, operadoras, S
       });
   };
 }
+
+/* MODALS */
+require('../views/modals/modal.html');
